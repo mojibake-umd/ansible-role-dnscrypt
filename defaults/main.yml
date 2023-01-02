@@ -14,7 +14,7 @@
 #
 dnscrypt_arch: { archive: linux_arm64, dir: linux-arm64 }
 
-dnscrypt_default_version: 2.0.17 # Fallback version in case the website doesn't have info about latest version
+dnscrypt_default_version: 2.1.2 # Fallback version in case the website doesn't have info about latest version
 
 dnscrypt_on_pihole: no      # Is it dnscrypt on pihole installation? Will modify pihole config
 
@@ -31,16 +31,20 @@ dnscrypt_port: 41
 # 'true' | 'false' - not True or false, as this syntax is being imported into dnscrypt configuration file.
 dnscrypt_ipv4_servers: 'true'      # Use servers reachable over IPv4.
 dnscrypt_ipv6_servers: 'false'     # Use servers reachable over IPv6. Do not enable if you don't have IPv6 set up.
-dnscrypt_dc_servers: 'true'        # Use servers implementing the DNSCrypt protocol.
+dnscrypt_dc_servers: 'false'       # Use servers implementing the DNSCrypt protocol.
 dnscrypt_doh_servers: 'true'       # Use servers implementing the DNS-over-HTTPS protocol.
-dnscrypt_require_dnssec: 'true'    # Requre upstream resolver to support DNSSEC Validation
+dnscrypt_odoh_servers: 'false'     # Use servers implementing the Oblivious DNS-over-HTTPS protocol.
+dnscrypt_require_dnssec: 'false'   # Requre upstream resolver to support DNSSEC Validation
 dnscrypt_require_nolog: 'true'     # Server must not log user queries (declarative).
 dnscrypt_require_nofilter: 'true'  # Server must not enforce its own blacklist (for parental control, ads blocking)
 dnscrypt_force_tcp: 'false'        # Always use TCP to connect to upstream servers. Useful for TOR. Otherwise use 'false'
 
 dnscrypt_server_names: # Optional list of servers to use. See https://dnscrypt.info/public-servers for the values.
+dnscrypt_disabled_server_names: # Optional list of servers to disable. See https://dnscrypt.info/public-servers for the values.
+
 
 # 9.9.9.9:53 -- Quad9 DNSSec anycast privacy oriented Google alternative
 # 114.114.114.114:53 -- for people in China.
-dnscrypt_fallback_resolver: 9.9.9.9:53 # non-encrypted fallback resolver. Only used if DNS config doesn't work
+dnscrypt_bootstrap_resolvers:
+  - 9.9.9.9:53 # non-encrypted fallback resolver. Only used if DNS config doesn't work
 ...
