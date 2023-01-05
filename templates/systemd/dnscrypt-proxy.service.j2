@@ -1,7 +1,9 @@
 [Unit]
 Description=DNSCrypt-proxy client
 Documentation=https://github.com/jedisct1/dnscrypt-proxy/wiki
+{% if dnscrypt_sysd_socket_only %}
 Requires=dnscrypt-proxy.socket
+{% endif %}
 After=network.target
 Before=nss-lookup.target
 Wants=nss-lookup.target
@@ -22,5 +24,7 @@ LogsDirectory=dnscrypt-proxy
 RuntimeDirectory=dnscrypt-proxy
 
 [Install]
+{% if dnscrypt_sysd_socket_only %}
 Also=dnscrypt-proxy.socket
+{% endif %}
 WantedBy=multi-user.target
