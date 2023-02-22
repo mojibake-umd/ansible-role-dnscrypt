@@ -12,7 +12,7 @@
 #   android-arm, android-arm64, android-i386, android-x86_64
 #   win32, win64
 #
-dnscrypt_arch: { archive: linux_arm64, dir: linux-arm64 }
+dnscrypt_arch: { archive: 'linux_arm64', dir: 'linux-arm64' }
 
 dnscrypt_default_version: 2.1.2 # Fallback version in case the website doesn't have info about latest version
 
