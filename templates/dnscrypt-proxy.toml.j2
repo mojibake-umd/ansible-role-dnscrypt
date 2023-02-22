@@ -89,12 +89,11 @@ require_dnssec = {{ dnscrypt_require_dnssec }}
 require_nolog = {{ dnscrypt_require_nolog }}
 
 # Server must not enforce its own blocklist (for parental control, ads blocking...)
-require_nofilter = true
 require_nofilter = {{ dnscrypt_require_nofilter }}
 
 # Server names to avoid even if they match all criteria
 {% if dnscrypt_disabled_server_names %}
-server_names = ['{{ dnscrypt_disabled_server_names|join('\', \'')}}']
+disabled_server_names = ['{{ dnscrypt_disabled_server_names|join('\', \'')}}']
 {% else %}
 disabled_server_names = []
 {% endif %}
