@@ -1,6 +1,5 @@
 ---
 # Systemd
-# TODO remove when dnscrypt_sysd_socket_only false
 - name: '[systemd] Generate systemd dnscrypt-proxy.socket unit'
   template:
     src: systemd/dnscrypt-proxy.socket.j2
@@ -8,7 +7,17 @@
     owner: root
     group: root
     mode: 0644
-    state: dnscrypt_sysd_socket_only
+  become: yes
+  notify: Restart dnscrypt-proxy.socket systemd unit
+  when: dnscrypt_sysd_socket_only
+  tags:
+  - dnscrypt
+  - dnscrypt_systemd
+
+- name: '[systemd] Ensure state of systemd dnscrypt-proxy.socket unit'
+  file:
+    path: /etc/systemd/system/dnscrypt-proxy.socket
+    state: file
   become: yes
   notify: Restart dnscrypt-proxy.socket systemd unit
   when: dnscrypt_sysd_socket_only
