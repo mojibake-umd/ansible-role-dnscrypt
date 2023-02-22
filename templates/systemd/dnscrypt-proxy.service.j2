@@ -23,6 +23,11 @@ CacheDirectory=dnscrypt-proxy
 LogsDirectory=dnscrypt-proxy
 RuntimeDirectory=dnscrypt-proxy
 
+# When using DynamicUser, need to grant
+# user capability to bing priviledged ports.
+# Could just set high number like 4141 instead
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
 [Install]
 {% if dnscrypt_sysd_socket_only %}
 Also=dnscrypt-proxy.socket
