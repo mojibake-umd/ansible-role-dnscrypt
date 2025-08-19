@@ -1,0 +1,3 @@
+---
+1. Configure pihole to point to 127.0.0.1#41
+2. Configure interface settings "Allow only local requests"
